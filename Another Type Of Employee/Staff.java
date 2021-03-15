@@ -37,7 +37,7 @@ public void payday ()
 double amount;
 for (int count=0; count < staffList.length; count++) 
 {
-System.out.println (staffList[count]); System.out.println (staffList[count]); // polymorphic // polymorphic
+System.out.println (staffList[count]); // polymorphic
 amount = staffList[count].pay(); amount = staffList[count].pay(); // polymorphic
 if (amount == 0.0)
 System.out.println ( "Thanks!");
