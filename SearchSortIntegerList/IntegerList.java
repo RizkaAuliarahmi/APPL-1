@@ -80,10 +80,27 @@ System.out.println(i + ":\t" + list[i]);
 }
 
 public void replaceFirst(int oldVal, int newVal){
-   int newIndex = -1;
+   try {
+       int newIndex = -1;
    newIndex = search(oldVal);
    list[newIndex] = newVal;
-   
+    } catch(ArrayIndexOutOfBoundsException e){
+        System.out.println("angka yang ingin diganti tidak ada");
+    }
+for (int i=0; i<list.length; i++)
+System.out.println(i + ":\t" + list[i]);
+}
+
+public void replaceAll(int oldVal, int newVal){
+   try {
+       int newIndex = -1; 
+       newIndex = search(oldVal);
+       for (newIndex = 0; newIndex < list.length; newIndex++){
+        list[newIndex] = newVal;
+       }
+    } catch(ArrayIndexOutOfBoundsException e){
+        System.out.println("angka yang ingin diganti tidak ada");
+    }
 for (int i=0; i<list.length; i++)
 System.out.println(i + ":\t" + list[i]);
 }
