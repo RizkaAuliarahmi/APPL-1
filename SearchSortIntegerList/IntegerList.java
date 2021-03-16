@@ -104,5 +104,26 @@ public void replaceAll(int oldVal, int newVal){
 for (int i=0; i<list.length; i++)
 System.out.println(i + ":\t" + list[i]);
 }
+
+public void sortDecreasing()
+{
+int maxIndex;
+for (int i=0; i < list.length-1; i++)
+{
+//find largest element in list starting at location i
+maxIndex = i;
+for (int j = i+1; j < list.length; j++)
+if (list[j] > list[maxIndex])
+maxIndex = j;
+//swap list[i] with largest element
+int temp = list[i];
+
+list[i] = list[maxIndex];
+list[maxIndex] = temp;
+}
+
+for (int i=0; i<list.length; i++)
+System.out.println(i + ":\t" + list[i]);
+}
 }
 

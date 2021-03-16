@@ -65,8 +65,6 @@ break;
 case 4:
 list.print();
 break;
-default:
-System.out.println("Sorry, invalid choice");
 
 case 5:
 System.out.println("masukkan angka yang ingin diganti :");
@@ -82,7 +80,13 @@ int oldValue = scan.nextInt();
 System.out.println("masukkan angka baru yang akan mengganti angka lama : ");
 int newValue = scan.nextInt();
 list.replaceAll(oldValue, newValue);
-break;  
+break;
+
+case 7:
+list.sortDecreasing();
+break;
+default:
+System.out.println("Sorry, invalid choice");
 }
 }
 //-------------------------------------------------------
@@ -99,6 +103,7 @@ System.out.println("3: Find an element in the list using linear search");
 System.out.println("4: Print the list");
 System.out.println("5: Replace first value");
 System.out.println("6: Replace all value");
+System.out.println("7: decresion sort list");
 System.out.print("\nEnter your choice: ");
 }
 }
