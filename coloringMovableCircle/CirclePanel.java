@@ -67,6 +67,11 @@ buttonPane2.add(yellow);
 buttonPane2.add(blue);
 buttonPane2.add(black);
 this.add(buttonPane2, "North");
+
+red.setForeground(Color.red);
+yellow.setForeground(Color.yellow);
+blue.setForeground(Color.blue);
+black.setForeground(Color.black);
 }
 //---------------------------------------------------------------
 // Draw circle on CirclePanel
@@ -105,24 +110,28 @@ repaint();
 private class RedButtonListener implements ActionListener{
     public void actionPerformed(ActionEvent event){
         c = Color.red;
+        repaint();
     }
 }
 
 private class YellowButtonListener implements ActionListener{
     public void actionPerformed(ActionEvent event){
         c = Color.yellow;
+        repaint();
     }
 }
 
 private class BlueButtonListener implements ActionListener{
     public void actionPerformed(ActionEvent event){
         c = Color.blue;
+        repaint();
     }
 }
 
 private class BlackButtonListener implements ActionListener{
     public void actionPerformed(ActionEvent event){
         c = Color.black;
+        repaint();
     }
 }
 }
