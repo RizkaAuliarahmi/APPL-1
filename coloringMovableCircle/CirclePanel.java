@@ -39,7 +39,6 @@ JButton right = new JButton("Right");
 JButton up = new JButton("Up");
 JButton down = new JButton("Down");
 JButton red = new JButton("Red");
-red.setForeground(Color.red);
 JButton yellow = new JButton("Yellow");
 JButton blue = new JButton("Blue");
 JButton black = new JButton("Black");
@@ -48,7 +47,10 @@ left.addActionListener(new MoveListener(-20,0));
 right.addActionListener(new MoveListener(20,0));
 up.addActionListener(new MoveListener(0,-20));
 down.addActionListener(new MoveListener(0,20));
-//red.addActionListener(new );
+red.addActionListener(new RedButtonListener());
+yellow.addActionListener(new YellowButtonListener());
+blue.addActionListener(new BlueButtonListener());
+black.addActionListener(new BlackButtonListener());
 // Need a panel to put the buttons on or they'll be on
 //top of each other.
 JPanel buttonPanel = new JPanel();
@@ -56,9 +58,15 @@ buttonPanel.add(left);
 buttonPanel.add(right);
 buttonPanel.add(up);
 buttonPanel.add(down);
-buttonPanel.add(red);
 // Add the button panel to the bottom of the main panel
 this.add(buttonPanel, "South");
+
+JPanel buttonPane2 = new JPanel();
+buttonPane2.add(red);
+buttonPane2.add(yellow);
+buttonPane2.add(blue);
+buttonPane2.add(black);
+this.add(buttonPane2, "North");
 }
 //---------------------------------------------------------------
 // Draw circle on CirclePanel
@@ -83,7 +91,8 @@ public MoveListener(int dx, int dy)
 this.dx = dx;
 this.dy = dy;
 }
-//--------------------------------------------------------------- //Change x and y coordinates and repaint.
+//--------------------------------------------------------------- 
+//Change x and y coordinates and repaint.
 //---------------------------------------------------------------
 public void actionPerformed(ActionEvent e)
 {
@@ -91,5 +100,29 @@ x += dx;
 y += dy;
 repaint();
 }
+}
+
+private class RedButtonListener implements ActionListener{
+    public void actionPerformed(ActionEvent event){
+        c = Color.red;
+    }
+}
+
+private class YellowButtonListener implements ActionListener{
+    public void actionPerformed(ActionEvent event){
+        c = Color.yellow;
+    }
+}
+
+private class BlueButtonListener implements ActionListener{
+    public void actionPerformed(ActionEvent event){
+        c = Color.blue;
+    }
+}
+
+private class BlackButtonListener implements ActionListener{
+    public void actionPerformed(ActionEvent event){
+        c = Color.black;
+    }
 }
 }
