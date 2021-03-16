@@ -42,6 +42,7 @@ JButton red = new JButton("Red");
 JButton yellow = new JButton("Yellow");
 JButton blue = new JButton("Blue");
 JButton black = new JButton("Black");
+JButton ChooseColor = new JButton("Choose Color");
 // Add listeners to the buttons
 left.addActionListener(new MoveListener(-20,0));
 right.addActionListener(new MoveListener(20,0));
@@ -51,6 +52,7 @@ red.addActionListener(new RedButtonListener());
 yellow.addActionListener(new YellowButtonListener());
 blue.addActionListener(new BlueButtonListener());
 black.addActionListener(new BlackButtonListener());
+ChooseColor.addActonListener(this);
 // Need a panel to put the buttons on or they'll be on
 //top of each other.
 JPanel buttonPanel = new JPanel();
@@ -64,6 +66,7 @@ this.add(buttonPanel, "South");
 JPanel buttonPane2 = new JPanel();
 buttonPane2.add(red);
 buttonPane2.add(yellow);
+buttonPane2.add(ChooseColor);
 buttonPane2.add(blue);
 buttonPane2.add(black);
 this.add(buttonPane2, "North");
@@ -134,4 +137,12 @@ private class BlackButtonListener implements ActionListener{
         repaint();
     }
 }
+
+
+    public void actionPerformed(ActionEvent event){
+        Color initialcolor=Color.RED;    
+        Color color = JColorChooser.showDialog(this,"Select a color",initialcolor);    
+        c = Color.color;    
+        
+    }
 }
