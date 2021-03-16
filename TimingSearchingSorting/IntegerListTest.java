@@ -79,14 +79,10 @@ break;
 case 7:
 list.sortIncreasing();
 System.out.println("List has been sorted.");
-System.out.print("Current Time in milliseconds = ");
-System.out.println(System.currentTimeMillis());
 break;
 case 8:
 list.sortDecreasing();
 System.out.println("List has been sorted.");
-System.out.print("Current Time in milliseconds = ");
-System.out.println(System.currentTimeMillis());
 break;
 default:
 System.out.println("Sorry, invalid choice");

@@ -60,10 +60,14 @@ return s;
 //------------------------------------------------------------
 public int linearSearch(int target)
 {
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis());
 int location = -1;
 for (int i=0; i<list.length && location == -1; i++) if
 (list[i] == target)
 location = i;
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis());
 return location;
 }
 //------------------------------------------------------------
@@ -71,6 +75,8 @@ return location;
 //------------------------------------------------------------
 public void sortIncreasing()
 {
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis());
 int minIndex;
 for (int i=0; i < list.length-1; i++)
 {
@@ -85,32 +91,31 @@ int temp = list[i];
 list[i] = list[minIndex];
 list[minIndex] = temp;
 }
-
-for (int i=0; i<list.length; i++)
-System.out.println(i + ":\t" + list[i]);
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis());
 }
 
 public void sortDecreasing(){
-int maxIndex;
-for (int i=0; i < list.length-1; i++)
-{
-//find largest element in list starting at location i
-maxIndex = i;
-for (int j = i+1; j < list.length; j++)
-if (list[j] > list[maxIndex])
-maxIndex = j;
-//swap list[i] with largest element
-int temp = list[i];
-
-list[i] = list[maxIndex];
-list[maxIndex] = temp;
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis());
+for (int i=0; i < list.length-1; i++){
+    int key = list[i];
+    int j = i - 1;
+    
+while (j >= 0 && list[j] > key) {
+    list[j + 1] = list[j];
+                j = j - 1;
 }
 
-for (int i=0; i<list.length; i++)
-System.out.println(i + ":\t" + list[i]);
+list[j + 1] = key;
+}
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis());
 }
 
 public void binarySearch(int target){
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis());
     int low, mid, high;
     low = 0;
     high = (list.length - 1);
@@ -125,9 +130,13 @@ public void binarySearch(int target){
       mid = (low + high) / 2;
 
     }
-    if (list[mid] == target)
+    if (list[mid] == target){
        System.out.println("angka berada di posisi ke " + mid);
-    else
+    }else{
       System.out.println("angka tidak ditemukan");
+    }
+    
+System.out.print("Current Time in milliseconds = ");
+System.out.println(System.currentTimeMillis()); 
   }
 }
