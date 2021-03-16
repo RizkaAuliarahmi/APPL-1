@@ -18,6 +18,7 @@ package coloringMovableCircle;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.JColorChooser;
 public class CirclePanel extends JPanel
 {
 private final int CIRCLE_SIZE = 50;
@@ -52,7 +53,7 @@ red.addActionListener(new RedButtonListener());
 yellow.addActionListener(new YellowButtonListener());
 blue.addActionListener(new BlueButtonListener());
 black.addActionListener(new BlackButtonListener());
-ChooseColor.addActonListener(this);
+ChooseColor.addActionListener(new ChooseColorListener());
 // Need a panel to put the buttons on or they'll be on
 //top of each other.
 JPanel buttonPanel = new JPanel();
@@ -138,11 +139,12 @@ private class BlackButtonListener implements ActionListener{
     }
 }
 
-
+private class ChooseColorListener implements ActionListener{
     public void actionPerformed(ActionEvent event){
         Color initialcolor=Color.RED;    
-        Color color = JColorChooser.showDialog(this,"Select a color",initialcolor);    
-        c = Color.color;    
-        
+        Color color = JColorChooser.showDialog(null,"Select a color",initialcolor);  
+        c = Color.getColor("", color);
+        repaint(); 
     }
+}
 }
