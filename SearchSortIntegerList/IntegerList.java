@@ -125,5 +125,27 @@ list[maxIndex] = temp;
 for (int i=0; i<list.length; i++)
 System.out.println(i + ":\t" + list[i]);
 }
+
+ public void binarySearchD(int target)
+  {
+    int low, mid, high;
+    low = 0;
+    high = (list.length - 1);
+    mid = (low + high) / 2;
+    while (list[mid] != target && low <= high)
+    {
+      if (target < list[mid])
+        low = mid + 1;
+      else
+        high = mid - 1;
+      
+      mid = (low + high) / 2;
+
+    }
+    if (list[mid] == target)
+       System.out.println("angka berada di posisi ke" + mid);
+    else
+      System.out.println("angka tidak ditemukan");
+  }
 }
 

@@ -20,6 +20,7 @@ public class IntegerListTest
 {
 static IntegerList list = new IntegerList(10);
 static Scanner scan = new Scanner(System.in);
+static IntegerList sortedList = new IntegerList(10);
 //------------------------------------------------------- 
 //Create a list, then repeatedly print the menu and do what the 
 //user asks until they quit
@@ -85,6 +86,13 @@ break;
 case 7:
 list.sortDecreasing();
 break;
+
+case 8:
+System.out.println("masukan angka yang ingin dicari :");
+int target = scan.nextInt();
+list.sortDecreasing();
+list.binarySearchD(target);
+break;
 default:
 System.out.println("Sorry, invalid choice");
 }
@@ -103,7 +111,8 @@ System.out.println("3: Find an element in the list using linear search");
 System.out.println("4: Print the list");
 System.out.println("5: Replace first value");
 System.out.println("6: Replace all value");
-System.out.println("7: decresion sort list");
+System.out.println("7: Decresion sort list");
+System.out.println("8: Binary search");
 System.out.print("\nEnter your choice: ");
 }
 }
