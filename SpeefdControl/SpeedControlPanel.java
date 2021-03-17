@@ -28,7 +28,9 @@ private final int HEIGHT = 400;
 private final int BALL_SIZE = 50;
 private Circle bouncingBall; // the object that moves
 private Timer timer;
-private int moveX, moveY; // increment to move each time
+private int moveX, moveY;
+private Object label;
+private Object slider;// increment to move each time
 // ---------------------------------------------
 // Sets up the panel, including the timer
 // for the animation
@@ -49,6 +51,12 @@ slider.setMajorTickSpacing(40);
 slider.setMinorTickSpacing(10); 
 slider.setPaintTicks(true); 
 slider.setPaintLabels(true); 
+slider.setAlignmentX(LEFT_ALIGNMENT);
+slider.addChangeListener(new SlideListener());
+
+JPanel contentPane = new JPanel();
+contentPane.add(slider);
+this.add(contentPane, "North");
 }
 // --------------------
 // Draw the ball
@@ -86,6 +94,15 @@ private class SlideListener implements ChangeListener {
 //resets the delay on the timer.
 // -------------------------------------------------
 public void stateChanged (ChangeEvent event) {
-}
+    JSlider source = (JSlider)event.getSource();
+    JLabel label = new JLabel();
+    if (!source.getValueIsAdjusting()) {
+            int val = (int)source.getValue();
+            label.setText("value is :" + val);
+    }
+    JPanel contentPane2 = new JPanel();
+    contentPane2.add(label);
+    label.add(contentPane2, "South");
+    }
 }
 }
