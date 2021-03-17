@@ -32,7 +32,8 @@ private Timer timer;
 private int moveX, moveY;
 private Object label;
 private Object slider;
-private JPanel contentPane;// increment to move each time
+private JPanel contentPanel;
+Dimension height;// increment to move each time
 // ---------------------------------------------
 // Sets up the panel, including the timer
 // for the animation
@@ -60,11 +61,11 @@ JLabel label = new JLabel();
 label.setText("Timer Delay");
 label.setAlignmentX(LEFT_ALIGNMENT);
     
-JPanel contentPane = new JPanel();
-contentPane.add(slider);
-contentPane.setLayout(new FlowLayout());
-contentPane.add(label);
-this.add(contentPane, "South");
+contentPanel = new JPanel();
+contentPanel.add(slider);
+contentPanel.setLayout(new FlowLayout());
+contentPanel.add(label);
+this.add(contentPanel, "South");
 
    
  
@@ -92,11 +93,15 @@ bouncingBall.move(moveX, moveY);
 // change direction if ball hits a side 
 int x = bouncingBall.getX();
 int y = bouncingBall.getY();
-int slidePanelHt = contentPane.getSize().height;
+try {
+int slidePanelHt = contentPanel.getSize().height;
 if (x < 0 || x >= WIDTH - BALL_SIZE) 
     moveX = moveX * -1;
-if (y <= 0 || y >= HEIGHT - BALL_SIZE)
+if (y <= 0 || y >= HEIGHT - slidePanelHt - BALL_SIZE)
     moveY = moveY * -1;
+} catch(NullPointerException e){
+       System.out.println("");
+    }   
 repaint();}
 }
 // *****************************************************
