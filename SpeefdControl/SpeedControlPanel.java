@@ -17,6 +17,7 @@ package SpeefdControl;
 // rather than a happy face is rebounding off the edges of the //window.
 // ******************************************************************
 import java.awt.*;
+import static java.awt.Component.LEFT_ALIGNMENT;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -30,7 +31,8 @@ private Circle bouncingBall; // the object that moves
 private Timer timer;
 private int moveX, moveY;
 private Object label;
-private Object slider;// increment to move each time
+private Object slider;
+private JPanel contentPane;// increment to move each time
 // ---------------------------------------------
 // Sets up the panel, including the timer
 // for the animation
@@ -54,9 +56,20 @@ slider.setPaintLabels(true);
 slider.setAlignmentX(LEFT_ALIGNMENT);
 slider.addChangeListener(new SlideListener());
 
+JLabel label = new JLabel();
+label.setText("Timer Delay");
+label.setAlignmentX(LEFT_ALIGNMENT);
+    
 JPanel contentPane = new JPanel();
 contentPane.add(slider);
-this.add(contentPane, "North");
+contentPane.setLayout(new FlowLayout());
+contentPane.add(label);
+this.add(contentPane, "South");
+
+   
+ 
+    
+    
 }
 // --------------------
 // Draw the ball
@@ -79,6 +92,7 @@ bouncingBall.move(moveX, moveY);
 // change direction if ball hits a side 
 int x = bouncingBall.getX();
 int y = bouncingBall.getY();
+int slidePanelHt = contentPane.getSize().height;
 if (x < 0 || x >= WIDTH - BALL_SIZE) 
     moveX = moveX * -1;
 if (y <= 0 || y >= HEIGHT - BALL_SIZE)
@@ -95,14 +109,19 @@ private class SlideListener implements ChangeListener {
 // -------------------------------------------------
 public void stateChanged (ChangeEvent event) {
     JSlider source = (JSlider)event.getSource();
-    JLabel label = new JLabel();
+    try {
     if (!source.getValueIsAdjusting()) {
-            int val = (int)source.getValue();
-            label.setText("value is :" + val);
+            timer.stop();
+        int delay = 0;
+        int newDelay = (int)source.getValue();
+            timer.setDelay(newDelay);
+            timer.start();
+    } 
+    }  catch(ArithmeticException e){
+       System.out.println("");
+    }   
+    JLabel label = new JLabel();
+    label.setText("Timer Delay"+source.getValue());
     }
-    JPanel contentPane2 = new JPanel();
-    contentPane2.add(label);
-    label.add(contentPane2, "South");
     }
-}
 }
