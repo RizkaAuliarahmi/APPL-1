@@ -18,7 +18,7 @@ package ThrowingExceptions;
 import java.util.Scanner; 
 public class Factorials 
 { 
- public static void main(String[] args) 
+ public static void main(String[] args) throws IllegalArgumentException
  { 
  String keepGoing = "y"; 
  Scanner scan = new Scanner(System.in); 
@@ -26,8 +26,10 @@ public class Factorials
  { 
  System.out.print("Enter an integer: "); 
  int val = scan.nextInt(); 
- System.out.println("Factorial(" + val + ") = " 
- + MathUtils.factorial(val)); 
+  if (val < 0){
+      throw new IllegalArgumentException("value tidak boleh negatif");
+  }
+ System.out.println("Factorial(" + val + ") = "+ MathUtils.factorial(val));
  System.out.print("Another factorial? (y/n) "); 
  keepGoing = scan.next(); 
  } 
