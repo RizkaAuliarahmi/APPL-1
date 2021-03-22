@@ -26,10 +26,17 @@ public class Factorials
  { 
  System.out.print("Enter an integer: "); 
  int val = scan.nextInt(); 
+try {
   if (val < 0){
       throw new IllegalArgumentException("value tidak boleh negatif");
+  } else if (val > 16){
+      throw new IllegalArgumentException("value tidak boleh lebih dari 16");
   }
- System.out.println("Factorial(" + val + ") = "+ MathUtils.factorial(val));
+System.out.println("Factorial(" + val + ") = "+ MathUtils.factorial(val));
+}
+catch(IllegalArgumentException e){
+   System.out.println("tidak bisa mengoperasi bilangan negatif");
+}
  System.out.print("Another factorial? (y/n) "); 
  keepGoing = scan.next(); 
  } 
