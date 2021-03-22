@@ -39,7 +39,7 @@ if (counts [i] != 0)
 System.out.println((char)(i +'A') + ": " + counts[i]);
 }
 catch (ArrayIndexOutOfBoundsException e){
-    System.out.println("");
+    System.out.println("error, tidak boleh menambahkan spasi dan karakter selain huruf");
 }
 } 
 }
