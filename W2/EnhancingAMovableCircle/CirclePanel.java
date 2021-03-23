@@ -19,16 +19,20 @@ import java.awt.*;
 import javax.swing.*; 
 import java.awt.event.*; 
 import java.awt.event.KeyEvent;
+//import java.time.Clock.System(ZoneId);
 public class CirclePanel extends JPanel 
 { 
  private final int CIRCLE_SIZE = 50; 
  private int x,y; 
  private Color c; 
+ private JButton left;
+ private JButton right;
+ private JButton up;
+ private JButton down;
  //--------------------------------------------------------------- 
  // Set up circle and buttons to move it. 
  //--------------------------------------------------------------- 
- public CirclePanel(int width, int height) 
- { 
+ public CirclePanel(int width, int height) { 
  // Set coordinates so circle starts in middle 
  x = (width/2)-(CIRCLE_SIZE/2); 
  y = (height/2)-(CIRCLE_SIZE/2); 
@@ -49,15 +53,19 @@ public class CirclePanel extends JPanel
  up.setMnemonic(KeyEvent.VK_U);
  down.setMnemonic(KeyEvent.VK_ALT);
  down.setMnemonic(KeyEvent.VK_D);
- 
- 
- up.setToolTipText("ke atas");
+ //tooltip text 
+ left.setToolTipText("ke kanan sebanyak 1 langkah");
+ right.setToolTipText("ke kiri sebanyak 1 langkah");
+ up.setToolTipText("ke atas sebanyak 1 langkah");
+ down.setToolTipText("ke bawah sebanyak 1 langkah");
  // Add listeners to the buttons 
  left.addActionListener(new MoveListener(-20,0)); 
  right.addActionListener(new MoveListener(20,0)); 
  up.addActionListener(new MoveListener(0,-20)); 
  down.addActionListener(new MoveListener(0,20)); 
  // Need a panel to put the buttons on or they'll be on 
+ //JLabel label = new JLabel();
+ System.out.println(left.getLocation());
  // top of each other. 
  JPanel buttonPanel = new JPanel(); 
  buttonPanel.add(left); 
@@ -98,6 +106,8 @@ public class CirclePanel extends JPanel
  x += dx; 
  y += dy; 
  repaint(); 
- } 
+ }
+
+System.out.println(left.getLocation()); 
  } 
 } 

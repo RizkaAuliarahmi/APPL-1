@@ -26,5 +26,7 @@ public class MoveCircle
  frame.setSize(400,300); 
  frame.getContentPane().add(new CirclePanel(400,300)); 
  frame.setVisible(true); 
+ 
+// system.out.println(frame.getLocationOnScreen());
  } 
 } 
