@@ -51,19 +51,15 @@ public class RatePanel extends JPanel
  
  //combo box for currency
  JComboBox box = new JComboBox(currencyName);
- box.addActionListener(new ComboListener(box.getItemCount()));
+ //box.addActionListener(new ComboListener(box.getItemCount()));
+ box.addActionListener(new ComboListener());
  add(box);
  } 
  // ****************************************************** 
  // Represents an action listener for the combo box. 
  // ****************************************************** 
  private class ComboListener implements ActionListener 
- { 
-     private int choice;
-     public ComboListener(int choice){
-         this.choice = choice;
-    }
-    
+ {  
  // -------------------------------------------------- 
  // Determines which currency has been selected and 
  // the value in that currency then computes and 
@@ -71,9 +67,13 @@ public class RatePanel extends JPanel
  // -------------------------------------------------- 
  public void actionPerformed (ActionEvent event) 
  { 
-// int index = 0; 
- result.setText ("1 " + currencyName[choice] + 
- " = " + rate[choice] + " U.S. Dollars"); 
+     JComboBox box = (JComboBox)event.getSource();
+     int index = (int)box.getSelectedIndex(); 
+     try{
+ result.setText ("1 " + currencyName[index] +  " = " + 
+         rate[index] + " U.S. Dollars"); 
+     }catch(ArrayIndexOutOfBoundsException e){
+    System.out.println("whyyy");}
  } 
  } 
 }
