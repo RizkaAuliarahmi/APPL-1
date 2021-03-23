@@ -20,7 +20,7 @@ import java.awt.event.*;
 import javax.swing.*; 
 public class RatePanel extends JPanel 
 { 
-   private double[] rate; // exchange rates 
+ private double[] rate; // exchange rates 
  private String[] currencyName; 
  private JLabel result; 
  private JComboBox box;
@@ -32,7 +32,7 @@ public class RatePanel extends JPanel
  // ------------------------------------------------------------ 
  public RatePanel () 
  { 
- JLabel title = new JLabel ("How much is that in dollars?"); 
+ JLabel title = new JLabel ("How much is that in dollars? "); 
  title.setAlignmentX (Component.CENTER_ALIGNMENT); 
  title.setFont (new Font ("Helvetica", Font.BOLD, 20)); 
  // Set up the arrays for the currency conversions 
@@ -51,9 +51,14 @@ public class RatePanel extends JPanel
  
  //combo box for currency
  JComboBox box = new JComboBox(currencyName);
- //box.addActionListener(new ComboListener(box.getItemCount()));
  box.addActionListener(new ComboListener());
  add(box);
+ 
+ //cost user input
+ JLabel cost = new JLabel();
+ String c = cost.getText();
+ System.out.println(c);
+ add(cost);
  } 
  // ****************************************************** 
  // Represents an action listener for the combo box. 
@@ -70,7 +75,7 @@ public class RatePanel extends JPanel
      JComboBox box = (JComboBox)event.getSource();
      int index = (int)box.getSelectedIndex(); 
      try{
- result.setText ("1 " + currencyName[index] +  " = " + 
+    result.setText ("1 " + currencyName[index] +  " = " + 
          rate[index] + " U.S. Dollars"); 
      }catch(ArrayIndexOutOfBoundsException e){
     System.out.println("whyyy");}
