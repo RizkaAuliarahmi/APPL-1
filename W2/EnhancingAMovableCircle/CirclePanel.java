@@ -19,6 +19,7 @@ import java.awt.*;
 import javax.swing.*; 
 import java.awt.event.*; 
 import java.awt.event.KeyEvent;
+import java.awt.Point;
 //import java.time.Clock.System(ZoneId);
 public class CirclePanel extends JPanel 
 { 
@@ -40,10 +41,10 @@ public class CirclePanel extends JPanel
  // Need a border layout to get the buttons on the bottom 
  this.setLayout(new BorderLayout()); 
  // Create buttons to move the circle 
- JButton left = new JButton("Left"); 
- JButton right = new JButton("Right"); 
- JButton up = new JButton("Up"); 
- JButton down = new JButton("Down"); 
+ left = new JButton("Left"); 
+ right = new JButton("Right"); 
+ up = new JButton("Up"); 
+ down = new JButton("Down"); 
  //setMnemonic button
  left.setMnemonic(KeyEvent.VK_ALT);
  left.setMnemonic(KeyEvent.VK_L);
@@ -54,10 +55,10 @@ public class CirclePanel extends JPanel
  down.setMnemonic(KeyEvent.VK_ALT);
  down.setMnemonic(KeyEvent.VK_D);
  //tooltip text 
- left.setToolTipText("ke kanan sebanyak 1 langkah");
- right.setToolTipText("ke kiri sebanyak 1 langkah");
- up.setToolTipText("ke atas sebanyak 1 langkah");
- down.setToolTipText("ke bawah sebanyak 1 langkah");
+ left.setToolTipText("ke kanan sebanyak 20 langkah");
+ right.setToolTipText("ke kiri sebanyak 20 langkah");
+ up.setToolTipText("ke atas sebanyak 20 langkah");
+ down.setToolTipText("ke bawah sebanyak 20 langkah");
  // Add listeners to the buttons 
  left.addActionListener(new MoveListener(-20,0)); 
  right.addActionListener(new MoveListener(20,0)); 
@@ -74,6 +75,7 @@ public class CirclePanel extends JPanel
  buttonPanel.add(down); 
  // Add the button panel to the bottom of the main panel 
  this.add(buttonPanel, "South"); 
+ 
  } 
  //--------------------------------------------------------------- 
  // Draw circle on CirclePanel 
@@ -90,6 +92,7 @@ public class CirclePanel extends JPanel
  { 
  private int dx; 
  private int dy; 
+ 
  //--------------------------------------------------------------- 
  // Parameters tell how to move circle at click. 
  //--------------------------------------------------------------- 
@@ -106,8 +109,11 @@ public class CirclePanel extends JPanel
  x += dx; 
  y += dy; 
  repaint(); 
+ 
+ if (x > 305) right.setEnabled(false); else right.setEnabled(true);
+ if (x < 25) left.setEnabled(false); else left.setEnabled(true);
+ if (y > 160) down.setEnabled(false); else down.setEnabled(true);
+ if (y < 25) up.setEnabled(false); else up.setEnabled(true);
  }
-
-System.out.println(left.getLocation()); 
  } 
 } 
