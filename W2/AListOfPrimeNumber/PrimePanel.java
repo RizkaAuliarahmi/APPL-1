@@ -42,7 +42,7 @@ public class PrimePanel extends JPanel
  JScrollPane pane = new JScrollPane(primeList);
  pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);  
  pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);  
- pane.add(primeList);
+ //pane.add(primeList);
   //Add the components to the panel 
  add (heading); 
  add (inputLabel); 
@@ -63,10 +63,11 @@ public class PrimePanel extends JPanel
  // ----------------------------------------------------------- 
  public void actionPerformed (ActionEvent event) 
  { 
+ String ans;
  try{
  String textNum = number.getText(); 
  int num = Integer.parseInt (textNum); 
- String ans = ""; 
+ ans = ""; 
 int count = 0; 
  if (num < 2) 
  ans = "There no primes less than " + num; 
@@ -80,9 +81,10 @@ int count = 0;
  while (j < i && !foundDivisor) { 
  if (i % j == 0) 
  foundDivisor = true; 
- else 
- j++; 
- } 
+ else if (j == Math.sqrt(i))
+    foundDivisor = true;      
+ else j++;
+ }
  // Add i to the list if it is prime 
  if (j == i) 
  { 
@@ -93,8 +95,8 @@ int count = 0;
  } 
  } 
  } 
+ }catch(NumberFormatException e){ans = "input must be number";}
  primeList.setText (ans); 
- }catch(NumberFormatException e){System.out.println("");}
  }
  }
 }
