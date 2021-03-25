@@ -38,17 +38,17 @@ public class PrimePanel extends JPanel
  computeButton = new JButton ("Click to see all primes up to your number!"); 
  primeList = new JTextArea (10, 30); 
  computeButton.addActionListener(new ButtonListener()); 
- 
- //JScrollPane pane = new JScrollPane(primeList);
- //pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);  
- //pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);  
- //pane.add(primeList);
- // Add the components to the panel 
+ //add scrollpane
+ JScrollPane pane = new JScrollPane(primeList);
+ pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);  
+ pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);  
+ pane.add(primeList);
+  //Add the components to the panel 
  add (heading); 
  add (inputLabel); 
  add (number); 
  add (computeButton); 
- //add (pane); 
+ add (pane); 
  setPreferredSize (new Dimension (400, 320)); 
  setBackground (Color.yellow); 
  } 
