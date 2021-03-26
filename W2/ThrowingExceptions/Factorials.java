@@ -35,7 +35,11 @@ try {
 System.out.println("Factorial(" + val + ") = "+ MathUtils.factorial(val));
 }
 catch(IllegalArgumentException e){
-   System.out.println("tidak bisa mengoperasi bilangan negatif");
+  if (val < 0){
+     System.out.println("value tidak boleh negatif");
+  } else if (val > 16){
+      System.out.println("value tidak boleh lebih dari 16");
+  }
 }
  System.out.print("Another factorial? (y/n) "); 
  keepGoing = scan.next(); 
